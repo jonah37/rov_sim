@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="camera_sensor" params="parent_link">
+    <!-- Camera link -->
+      <link name="camera_link">
+        <inertial>
+          <origin xyz="0 0 0" rpy="0 0 0"/>  <!-- Keep this at 0,0,0 for a camera -->
+          <mass value="0.01"/>  <!-- Small mass, not zero -->
+          <inertia ixx="0.0001" ixy="0" ixz="0"
+                   iyy="0.0001" iyz="0"
+                   izz="0.0001"/>
+        </inertial>
+        
+        <!-- Visual removed so camera box doesn't obstruct view -->
+        <!--
+        <visual>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.02 0.05 0.02"/>
+          </geometry>
+        </visual>
+        -->
+        
+        <!-- Collision box made tiny -->
+        <collision>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.001 0.001 0.001"/>
+          </geometry>
+        </collision>
+      </link>
+      
+      <!-- Joint connecting camera to ROV -->
+      <!-- CHANGE THIS LINE TO MOVE THE CAMERA -->
+      <joint name="camera_joint" type="fixed">
+        <parent link="${parent_link}"/>
+        <child link="camera_link"/>
+        <origin xyz="0.15 0 0.2" rpy="0 0 0"/>  <!-- Change xyz here! -->
+      </joint>
+      
+      <!-- Camera sensor (Gazebo) -->
+      <gazebo reference="camera_link">
+        <sensor name="camera" type="camera">
+          <update_rate>30</update_rate>
+          <camera>
+            <horizontal_fov>2.094</horizontal_fov> 
+            <image>
+              <width>1280</width>
+              <height>720</height>
+              <format>R8G8B8</format>
+            </image>
+            <!-- Limiting the closest and farthest distance that the camera can see-->
+            <clip>
+              <near>0.05</near>
+              <far>100</far>
+            </clip>
+          </camera>
+          <always_on>1</always_on>
+          <visualize>true</visualize>
+          <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+            <render_engine>ogre2</render_engine>
+          </plugin>
+        </sensor>
+      </gazebo>
+    </xacro:macro>
+</robot>

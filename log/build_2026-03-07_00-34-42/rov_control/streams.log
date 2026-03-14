@@ -1,0 +1,17 @@
+[1.583s] Invoking command in '/home/jonah/rov_sim_ws/build/rov_control': PYTHONPATH=/home/jonah/rov_sim_ws/build/rov_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/jonah/rov_sim_ws/install/rov_control/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/jonah/rov_sim_ws/build/rov_control/build --no-deps symlink_data --force
+[1.992s] running develop
+[2.241s] running egg_info
+[2.264s] writing rov_control.egg-info/PKG-INFO
+[2.265s] writing dependency_links to rov_control.egg-info/dependency_links.txt
+[2.265s] writing requirements to rov_control.egg-info/requires.txt
+[2.265s] writing top-level names to rov_control.egg-info/top_level.txt
+[2.313s] reading manifest file 'rov_control.egg-info/SOURCES.txt'
+[2.314s] writing manifest file 'rov_control.egg-info/SOURCES.txt'
+[2.340s] running build_ext
+[2.341s] Creating /home/jonah/rov_sim_ws/install/rov_control/lib/python3.12/site-packages/rov-control.egg-link (link to .)
+[2.342s] 
+[2.342s] Installed /home/jonah/rov_sim_ws/build/rov_control
+[2.342s] running symlink_data
+[2.343s] symbolically linking /home/jonah/rov_sim_ws/build/rov_control/resource/rov_control -> /home/jonah/rov_sim_ws/install/rov_control/share/ament_index/resource_index/packages
+[2.343s] symbolically linking /home/jonah/rov_sim_ws/build/rov_control/package.xml -> /home/jonah/rov_sim_ws/install/rov_control/share/rov_control
+[2.376s] Invoked command in '/home/jonah/rov_sim_ws/build/rov_control' returned '0': PYTHONPATH=/home/jonah/rov_sim_ws/build/rov_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/jonah/rov_sim_ws/install/rov_control/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/jonah/rov_sim_ws/build/rov_control/build --no-deps symlink_data --force

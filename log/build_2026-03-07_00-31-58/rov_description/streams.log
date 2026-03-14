@@ -1,0 +1,20 @@
+[0.308s] Invoking command in '/home/jonah/rov_sim_ws/build/rov_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jonah/rov_sim_ws/install/rov_control:/opt/ros/jazzy /usr/bin/cmake --build /home/jonah/rov_sim_ws/build/rov_description -- -j8 -l8
+[0.393s] Invoked command in '/home/jonah/rov_sim_ws/build/rov_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jonah/rov_sim_ws/install/rov_control:/opt/ros/jazzy /usr/bin/cmake --build /home/jonah/rov_sim_ws/build/rov_description -- -j8 -l8
+[0.396s] Invoking command in '/home/jonah/rov_sim_ws/build/rov_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jonah/rov_sim_ws/install/rov_control:/opt/ros/jazzy /usr/bin/cmake --install /home/jonah/rov_sim_ws/build/rov_description
+[0.413s] -- Install configuration: ""
+[0.413s] -- Up-to-date: /home/jonah/rov_sim_ws/install/rov_description/share/ament_index/resource_index/package_run_dependencies/rov_description
+[0.413s] -- Up-to-date: /home/jonah/rov_sim_ws/install/rov_description/share/ament_index/resource_index/parent_prefix_path/rov_description
+[0.413s] -- Up-to-date: /home/jonah/rov_sim_ws/install/rov_description/share/rov_description/environment/ament_prefix_path.sh
+[0.414s] -- Up-to-date: /home/jonah/rov_sim_ws/install/rov_description/share/rov_description/environment/ament_prefix_path.dsv
+[0.414s] -- Up-to-date: /home/jonah/rov_sim_ws/install/rov_description/share/rov_description/environment/path.sh
+[0.414s] -- Up-to-date: /home/jonah/rov_sim_ws/install/rov_description/share/rov_description/environment/path.dsv
+[0.415s] -- Up-to-date: /home/jonah/rov_sim_ws/install/rov_description/share/rov_description/local_setup.bash
+[0.415s] -- Up-to-date: /home/jonah/rov_sim_ws/install/rov_description/share/rov_description/local_setup.sh
+[0.415s] -- Up-to-date: /home/jonah/rov_sim_ws/install/rov_description/share/rov_description/local_setup.zsh
+[0.415s] -- Up-to-date: /home/jonah/rov_sim_ws/install/rov_description/share/rov_description/local_setup.dsv
+[0.415s] -- Up-to-date: /home/jonah/rov_sim_ws/install/rov_description/share/rov_description/package.dsv
+[0.415s] -- Up-to-date: /home/jonah/rov_sim_ws/install/rov_description/share/ament_index/resource_index/packages/rov_description
+[0.416s] -- Up-to-date: /home/jonah/rov_sim_ws/install/rov_description/share/rov_description/cmake/rov_descriptionConfig.cmake
+[0.416s] -- Up-to-date: /home/jonah/rov_sim_ws/install/rov_description/share/rov_description/cmake/rov_descriptionConfig-version.cmake
+[0.416s] -- Up-to-date: /home/jonah/rov_sim_ws/install/rov_description/share/rov_description/package.xml
+[0.417s] Invoked command in '/home/jonah/rov_sim_ws/build/rov_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jonah/rov_sim_ws/install/rov_control:/opt/ros/jazzy /usr/bin/cmake --install /home/jonah/rov_sim_ws/build/rov_description

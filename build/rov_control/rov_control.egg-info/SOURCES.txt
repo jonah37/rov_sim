@@ -1,0 +1,17 @@
+package.xml
+setup.cfg
+setup.py
+../../build/rov_control/rov_control.egg-info/PKG-INFO
+../../build/rov_control/rov_control.egg-info/SOURCES.txt
+../../build/rov_control/rov_control.egg-info/dependency_links.txt
+../../build/rov_control/rov_control.egg-info/requires.txt
+../../build/rov_control/rov_control.egg-info/top_level.txt
+../../build/rov_control/rov_control.egg-info/zip-safe
+resource/rov_control
+rov_control/__init__.py
+rov_control.egg-info/PKG-INFO
+rov_control.egg-info/SOURCES.txt
+rov_control.egg-info/dependency_links.txt
+rov_control.egg-info/requires.txt
+rov_control.egg-info/top_level.txt
+rov_control.egg-info/zip-safe

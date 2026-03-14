@@ -1,0 +1,15 @@
+running develop
+running egg_info
+writing rov_control.egg-info/PKG-INFO
+writing dependency_links to rov_control.egg-info/dependency_links.txt
+writing requirements to rov_control.egg-info/requires.txt
+writing top-level names to rov_control.egg-info/top_level.txt
+reading manifest file 'rov_control.egg-info/SOURCES.txt'
+writing manifest file 'rov_control.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/jonah/rov_sim_ws/install/rov_control/lib/python3.12/site-packages/rov-control.egg-link (link to .)
+
+Installed /home/jonah/rov_sim_ws/build/rov_control
+running symlink_data
+symbolically linking /home/jonah/rov_sim_ws/build/rov_control/resource/rov_control -> /home/jonah/rov_sim_ws/install/rov_control/share/ament_index/resource_index/packages
+symbolically linking /home/jonah/rov_sim_ws/build/rov_control/package.xml -> /home/jonah/rov_sim_ws/install/rov_control/share/rov_control

@@ -1,0 +1,4 @@
+Invoking command in '/home/jonah/rov_sim_ws/build/gazebo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jonah/rov_sim_ws/install/rov_control:/opt/ros/jazzy /usr/bin/cmake --build /home/jonah/rov_sim_ws/build/gazebo -- -j8 -l8
+Invoked command in '/home/jonah/rov_sim_ws/build/gazebo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jonah/rov_sim_ws/install/rov_control:/opt/ros/jazzy /usr/bin/cmake --build /home/jonah/rov_sim_ws/build/gazebo -- -j8 -l8
+Invoking command in '/home/jonah/rov_sim_ws/build/gazebo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jonah/rov_sim_ws/install/rov_control:/opt/ros/jazzy /usr/bin/cmake --install /home/jonah/rov_sim_ws/build/gazebo
+Invoked command in '/home/jonah/rov_sim_ws/build/gazebo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jonah/rov_sim_ws/install/rov_control:/opt/ros/jazzy /usr/bin/cmake --install /home/jonah/rov_sim_ws/build/gazebo

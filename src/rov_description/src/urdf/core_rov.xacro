@@ -1,0 +1,243 @@
+<?xml version="1.0" ?>
+<xacro:macro name="ROV">
+
+  <xacro:include filename="$(find rov_description)/urdf/materials.xacro" />
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="6.803497611280975e-05 -0.026534939555549232 0.13092386828102498" rpy="0 0 0"/>
+      <mass value="5.187407499999991"/>
+      <inertia ixx="0.135313" iyy="0.154879" izz="0.198695" ixy="6.2e-05" iyz="0.001204" ixz="5e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find ROV_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find ROV_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="horizontal_thruster2_1">
+    <inertial>
+      <origin xyz="0.009999999999999898 -0.04000000000000006 -0.04550000000000001" rpy="0 0 0"/>
+      <mass value="0.37722516708346815"/>
+      <inertia ixx="0.000332" iyy="0.000332" izz="0.000274" ixy="-5.8e-05" iyz="-0.0" ixz="-0.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.175 -0.215 -0.21" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find ROV_description)/meshes/horizontal_thruster2_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="-0.175 -0.215 -0.21" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find ROV_description)/meshes/horizontal_thruster2_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="horizontal_thruster4_1">
+    <inertial>
+      <origin xyz="1.3877787807814457e-16 0.017000000000000015 -0.04550000000000001" rpy="0 0 0"/>
+      <mass value="0.3772251670834682"/>
+      <inertia ixx="0.000332" iyy="0.000332" izz="0.000274" ixy="5.8e-05" iyz="-0.0" ixz="0.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.1875 -0.1573 -0.21" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find ROV_description)/meshes/horizontal_thruster4_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0.1875 -0.1573 -0.21" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find ROV_description)/meshes/horizontal_thruster4_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="vertical_thruster2__1__1">
+    <inertial>
+      <origin xyz="0.04550000000000004 -0.21499999999999997 -0.009999999999999953" rpy="0 0 0"/>
+      <mass value="0.3772251670834677"/>
+      <inertia ixx="0.000274" iyy="0.000274" izz="0.00039" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.2 -0.215 -0.235" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find ROV_description)/meshes/vertical_thruster2__1__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="-0.2 -0.215 -0.235" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find ROV_description)/meshes/vertical_thruster2__1__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="vertical_thruster2_1">
+    <inertial>
+      <origin xyz="-0.04549999999999993 0.215 -0.009999999999999953" rpy="0 0 0"/>
+      <mass value="0.37722516708346715"/>
+      <inertia ixx="0.000274" iyy="0.000274" izz="0.00039" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.2 0.215 -0.235" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find ROV_description)/meshes/vertical_thruster2_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0.2 0.215 -0.235" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find ROV_description)/meshes/vertical_thruster2_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="horizontal_thruster1_1">
+    <inertial>
+      <origin xyz="-0.3149999069767443 0.024999999999999883 -0.04550000000000007" rpy="0 0 0"/>
+      <mass value="0.37722516708346804"/>
+      <inertia ixx="0.000332" iyy="0.000332" izz="0.000274" ixy="-5.8e-05" iyz="-0.0" ixz="-0.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.125872 0.215 -0.21" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find ROV_description)/meshes/horizontal_thruster1_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="-0.125872 0.215 -0.21" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find ROV_description)/meshes/horizontal_thruster1_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="horizontal_thruster3_1">
+    <inertial>
+      <origin xyz="-0.013000000000000012 -0.12000000000000009 -0.04550000000000018" rpy="0 0 0"/>
+      <mass value="0.37722516708346815"/>
+      <inertia ixx="0.000332" iyy="0.000332" izz="0.000274" ixy="5.8e-05" iyz="-0.0" ixz="0.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.2 0.0702 -0.21" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find ROV_description)/meshes/horizontal_thruster3_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="-0.2 0.0702 -0.21" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find ROV_description)/meshes/horizontal_thruster3_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="MEH_1">
+    <inertial>
+      <origin xyz="2.3314683517128286e-17 0.07073940006653459 -0.03" rpy="0 0 0"/>
+      <mass value="4.2331340000000015"/>
+      <inertia ixx="0.015367" iyy="0.017232" izz="0.015367" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.0 -0.0996 -0.2225" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find ROV_description)/meshes/MEH_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="-0.0 -0.0996 -0.2225" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find ROV_description)/meshes/MEH_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="PSE_1">
+    <inertial>
+      <origin xyz="-6.55447176035386e-18 -0.03 0.025000000000000022" rpy="0 0 0"/>
+      <mass value="2.0794400000000004"/>
+      <inertia ixx="0.003638" iyy="0.00882" izz="0.011592" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.0 0.1104 -0.235" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find ROV_description)/meshes/PSE_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="-0.0 0.1104 -0.235" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find ROV_description)/meshes/PSE_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Rigid 16" type="fixed">
+    <origin xyz="0.175 0.215 0.21" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="horizontal_thruster2_1"/>
+  </joint>
+
+  <joint name="Rigid 17" type="fixed">
+    <origin xyz="-0.1875 0.1573 0.21" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="horizontal_thruster4_1"/>
+  </joint>
+
+  <joint name="Rigid 18" type="fixed">
+    <origin xyz="0.2 0.215 0.235" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="vertical_thruster2__1__1"/>
+  </joint>
+
+  <joint name="Rigid 19" type="fixed">
+    <origin xyz="-0.2 -0.215 0.235" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="vertical_thruster2_1"/>
+  </joint>
+
+  <joint name="Rigid 20" type="fixed">
+    <origin xyz="0.125872 -0.215 0.21" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="horizontal_thruster1_1"/>
+  </joint>
+
+  <joint name="Rigid 21" type="fixed">
+    <origin xyz="0.2 -0.0702 0.21" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="horizontal_thruster3_1"/>
+  </joint>
+
+  <joint name="Rigid 22" type="fixed">
+    <origin xyz="0.0 0.0996 0.2225" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="MEH_1"/>
+  </joint>
+
+  <joint name="Rigid 23" type="fixed">
+    <origin xyz="0.0 -0.1104 0.235" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="PSE_1"/>
+  </joint>
+
+</xacro:macro>
