@@ -1,131 +1,263 @@
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import Bool, Float32MultiArray
-from geometry_msgs.msg import Twist, Vector3
-import time
-from core_lib import pca9685
-from rcl_interfaces.msg import ParameterDescriptor, FloatingPointRange, SetParametersResult
-from std_srvs.srv import Trigger
+from std_msgs.msg import Float32MultiArray, Float32
 
-# Create the main class for entry
 class Thrusters(Node):
     def __init__(self):
         super().__init__('thrusters')
 
+        # Public T200 data from BlueRobotics
+        self.thrust_lookup = {
+            1100: -2.90,
+            1104: -2.92,
+            1108: -2.89,
+            1112: -2.83,
+            1116: -2.79,
+            1120: -2.76,
+            1124: -2.72,
+            1128: -2.67,
+            1132: -2.60,
+            1136: -2.59,
+            1140: -2.56,
+            1144: -2.49,
+            1148: -2.44,
+            1152: -2.43,
+            1156: -2.39,
+            1160: -2.34,
+            1164: -2.30,
+            1168: -2.25,
+            1172: -2.23,
+            1176: -2.18,
+            1180: -2.14,
+            1184: -2.10,
+            1188: -2.07,
+            1192: -2.01,
+            1196: -1.98,
+            1200: -1.95,
+            1204: -1.88,
+            1208: -1.85,
+            1212: -1.81,
+            1216: -1.78,
+            1220: -1.73,
+            1224: -1.66,
+            1228: -1.65,
+            1232: -1.61,
+            1236: -1.56,
+            1240: -1.53,
+            1244: -1.49,
+            1248: -1.47,
+            1252: -1.44,
+            1256: -1.40,
+            1260: -1.37,
+            1264: -1.33,
+            1268: -1.29,
+            1272: -1.28,
+            1276: -1.22,
+            1280: -1.19,
+            1284: -1.15,
+            1288: -1.12,
+            1292: -1.08,
+            1296: -1.04,
+            1300: -1.02,
+            1304: -0.99,
+            1308: -0.96,
+            1312: -0.93,
+            1316: -0.90,
+            1320: -0.87,
+            1324: -0.83,
+            1328: -0.79,
+            1332: -0.77,
+            1336: -0.74,
+            1340: -0.72,
+            1344: -0.69,
+            1348: -0.66,
+            1352: -0.64,
+            1356: -0.60,
+            1360: -0.57,
+            1364: -0.54,
+            1368: -0.52,
+            1372: -0.49,
+            1376: -0.47,
+            1380: -0.44,
+            1384: -0.42,
+            1388: -0.39,
+            1392: -0.37,
+            1396: -0.34,
+            1400: -0.32,
+            1404: -0.29,
+            1408: -0.27,
+            1412: -0.24,
+            1416: -0.23,
+            1420: -0.20,
+            1424: -0.18,
+            1428: -0.16,
+            1432: -0.15,
+            1436: -0.12,
+            1440: -0.11,
+            1444: -0.09,
+            1448: -0.07,
+            1452: -0.06,
+            1456: -0.05,
+            1460: -0.04,
+            1464: 0.00,
+            1468: 0.00,
+            1472: 0.00,
+            1476: 0.00,
+            1480: 0.00,
+            1484: 0.00,
+            1488: 0.00,
+            1492: 0.00,
+            1496: 0.00,
+            1500: 0.00,
+            1504: 0.00,
+            1508: 0.00,
+            1512: 0.00,
+            1516: 0.00,
+            1520: 0.00,
+            1524: 0.00,
+            1528: 0.00,
+            1532: 0.00,
+            1536: 0.00,
+            1540: 0.04,
+            1544: 0.05,
+            1548: 0.07,
+            1552: 0.10,
+            1556: 0.11,
+            1560: 0.13,
+            1564: 0.15,
+            1568: 0.18,
+            1572: 0.20,
+            1576: 0.22,
+            1580: 0.25,
+            1584: 0.28,
+            1588: 0.31,
+            1592: 0.33,
+            1596: 0.37,
+            1600: 0.39,
+            1604: 0.43,
+            1608: 0.46,
+            1612: 0.49,
+            1616: 0.52,
+            1620: 0.55,
+            1624: 0.59,
+            1628: 0.63,
+            1632: 0.65,
+            1636: 0.68,
+            1640: 0.71,
+            1644: 0.76,
+            1648: 0.79,
+            1652: 0.83,
+            1656: 0.86,
+            1660: 0.89,
+            1664: 0.93,
+            1668: 0.97,
+            1672: 1.00,
+            1676: 1.04,
+            1680: 1.08,
+            1684: 1.14,
+            1688: 1.16,
+            1692: 1.20,
+            1696: 1.23,
+            1700: 1.28,
+            1704: 1.31,
+            1708: 1.35,
+            1712: 1.40,
+            1716: 1.43,
+            1720: 1.48,
+            1724: 1.53,
+            1728: 1.56,
+            1732: 1.63,
+            1736: 1.67,
+            1740: 1.71,
+            1744: 1.77,
+            1748: 1.82,
+            1752: 1.85,
+            1756: 1.91,
+            1760: 1.92,
+            1764: 1.96,
+            1768: 2.03,
+            1772: 2.09,
+            1776: 2.13,
+            1780: 2.18,
+            1784: 2.24,
+            1788: 2.27,
+            1792: 2.33,
+            1796: 2.40,
+            1800: 2.46,
+            1804: 2.51,
+            1808: 2.56,
+            1812: 2.62,
+            1816: 2.65,
+            1820: 2.71,
+            1824: 2.78,
+            1828: 2.84,
+            1832: 2.87,
+            1836: 2.93,
+            1840: 3.01,
+            1844: 3.04,
+            1848: 3.08,
+            1852: 3.16,
+            1856: 3.23,
+            1860: 3.26,
+            1864: 3.32,
+            1868: 3.38,
+            1872: 3.40,
+            1876: 3.45,
+            1880: 3.50,
+            1884: 3.57,
+            1888: 3.64,
+            1892: 3.71,
+            1896: 3.69,
+            1900: 3.71,
+        }
 
-        # Get the logger
-        self.log = self.get_logger()
+        # Create a subscriber to read PWM input to the ESCs
+        self.pwm_sub = self.create_subscription(Float32MultiArray, 'ESC_pwm_input', self.thruster_callback, 10)
+        # Create a publisher for each for each thruster
+        self.thruster_publishers = [
+            self.create_publisher(Float32, 'thruster1', 10)
+            self.create_publisher(Float32, 'thruster2', 10)
+            self.create_publisher(Float32, 'thruster3', 10)
+            self.create_publisher(Float32, 'thruster4', 10)
+            self.create_publisher(Float32, 'thruster5', 10)
+            self.create_publisher(Float32, 'thruster6', 10)
+        ]
 
-        # Attempt to connect to PCA9685
-        try: self.pca = pca9685.PCA9685(bus=1)
-        except IOError as e:
-            self.log.warn("Cannot connect to PCA9685. Ignore this if PWM converter is unplugged")
-            exit()
-        else:
-            
-            # Sets the frequency of the signal to 100hz
-            self.pca.set_pwm_frequency(100)
-            self.pca.output_enable()
+    def thruster_callback(self, msg):
+        pwm_array = msg.data
+        thrust_array = [self.compute_thrust(p) for p in pwm_array))
 
-            # Enables all thrusters
-            self.pca.channels_set_duty_all(0.15)
-            time.sleep(1) # Sleep is necessary to give thrusters time to initialize
-
-        # Creates the subscriber and publisher
-        self.thruster_sub = self.create_subscription(Twist, 'cmd_vel', self.thruster_callback, 10)
-        self.thruster_status_sub = self.create_subscription(Bool, 'thruster_status', self.thruster_status_callback, 10)
-
-        self.pwm_pub = self.create_publisher(Float32MultiArray, 'ESC_pwm', 10)
-
-        # Define slider parameters
-        slider_bounds = FloatingPointRange()
-        slider_bounds.from_value = 0.0
-        slider_bounds.to_value = 1.0
-        slider_bounds.step = 0.025
-        slider_descriptor = ParameterDescriptor(floating_point_range = [slider_bounds])
-
-        # Tells the thrusters whether they're allowed to spin or not
-        self.thrusters_enabled = False
-
-        # Last thruster values to prevent ESC reset
-        self.last_thrusters = [0.15, 0.15, 0.15, 0.15, 0.15, 0.15]
-
-        # Max delta of thrusters
-        self.max_delta = 0.004
-
-    # Runs whenever /cmd_vel topic recieves a new twist msg
-    # Twist msg reference: http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Twist.html
-    def thruster_status_callback(self, msg):
-        self.thrusters_enabled = msg.data
-
-    def thruster_callback(self, msg):    
-
-        linearX = msg.linear.x
-        linearY = msg.linear.y 
-        linearZ = msg.linear.z
-        angularX = msg.angular.x
-        angularZ = msg.angular.z
-
-        # Scalar to limit each thruster to 1800 Hz
-        scalar = 0.75
-
-        # Decompose the vectors into thruster values
-        # linearX references moving along X-axis, or forward
-        # angularZ referneces rotation around vertical axis, or Z-axis.
-        # For more reference directions, see https://www.canva.com/design/DAFyPqmH8LY/2oMLLaP8HHGi2e07Ms8fug/view
-        msglist = [(linearX - linearY - angularZ)  * scalar,
-                   (linearX + linearY + angularZ)  * scalar,
-                   (-linearX - linearY + angularZ) * scalar,
-                   (-linearX + linearY - angularZ) * scalar,
-                   (-linearZ - angularX) * scalar,
-                   (-linearZ + angularX) * scalar]
-
-        # function to limit a value between -1 and 1
-        # min(value, 1) takes the returns lesser of the two values. So if value is greater than 1, it returns 1.
-        def limit_value(value):
-            return max(-0.95, min(value, 0.95))
-
-        # Use map() to apply the limit_value function to each element of msglist
-        msglist = list(map(limit_value, msglist))
-
-        dutylist = [ round(0.15 - msglist[i] / 25, 5) for i in range(6) ]
-
-        # Loop to prevent ESC reset
-        # We make sure that the thrusters' speed can only change by a given amount each interval so as to not overwhelm them.
         for i in range(6):
-            if self.thrusters_enabled:
-                if abs(dutylist[i] - self.last_thrusters[i]) > self.max_delta:
-                    if dutylist[i] > self.last_thrusters[i]:
-                        dutylist[i] = self.last_thrusters[i] + self.max_delta
-                    else:
-                        dutylist[i] = self.last_thrusters[i] - self.max_delta
+            self.thruster_publishers[i].publish(Float32(data=thrust_array[i])
 
-                self.last_thrusters[i] = dutylist[i]
-                self.pca.channel_set_duty(i, dutylist[i])
-            else:
-                self.last_thrusters[i] = 0.15 
-                self.pca.channel_set_duty(i, 0.15)
+    def compute_thrust(self, pwm):
+        try:
+            return self.thrust_lookup[pwm] * 9.80665 # Multiply by 9.80665 to convert kgf to Newtons
+        except KeyError:
+            pass
+
+        # PWM periods should be limited to the 1120 - 1880 range in thrusters.py, so no need to validate in this program
+        lower_bound = int(pwm) - (int(pwm) % 4)
+        upper_bound = lower_bound + 4
+
+        f1 = self.thrust_lookup[lower_bound]
+        f2 = self.thrust_lookup[upper_bound]
+
+        slope = (f2 - f1)/(upper_bound - lower_bound)
+        interpolated_y = (f1 + slope * (pwm - lower_bound)) * 9.80665
+
+        return interpolated_y
 
 
-        # Formulas:
-        # pulse width = duty * period
-        # period = 1/frequency (frequency must be converted to cycles/microsecond)
-        # At 100 Hz, period = 10000 microseconds
-        
-        # Publish array of pulse widths
-        pwm_msg = Float32MultiArray([self.thrusters[i] * 10000 for i in range(6)])
-        self.pwm_pub.publish(pwm_msg)
-       
-# Runs the node
-def main(args=None):
+def main():
     rclpy.init(args=args)
 
     thrusters = Thrusters()
 
     rclpy.spin(thrusters)
-    
-    thrusters.destroy_node
-    rclpy.shutdown
 
-if __name__ == '__main__':
-   main()
+    thrusters.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == "__main__":
+    main()
