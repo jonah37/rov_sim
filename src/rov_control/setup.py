@@ -24,6 +24,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'thrusters = rov_control:thrusters:main',
+            'ESC = rov_control:ESC:main'
         ],
     },
 )
