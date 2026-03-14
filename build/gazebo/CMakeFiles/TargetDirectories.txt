@@ -1,9 +1,0 @@
-/home/jonah/rov_sim_ws/build/gazebo/CMakeFiles/uninstall.dir
-/home/jonah/rov_sim_ws/build/gazebo/CMakeFiles/gazebo_uninstall.dir
-/home/jonah/rov_sim_ws/build/gazebo/CMakeFiles/test.dir
-/home/jonah/rov_sim_ws/build/gazebo/CMakeFiles/edit_cache.dir
-/home/jonah/rov_sim_ws/build/gazebo/CMakeFiles/rebuild_cache.dir
-/home/jonah/rov_sim_ws/build/gazebo/CMakeFiles/list_install_components.dir
-/home/jonah/rov_sim_ws/build/gazebo/CMakeFiles/install.dir
-/home/jonah/rov_sim_ws/build/gazebo/CMakeFiles/install/local.dir
-/home/jonah/rov_sim_ws/build/gazebo/CMakeFiles/install/strip.dir

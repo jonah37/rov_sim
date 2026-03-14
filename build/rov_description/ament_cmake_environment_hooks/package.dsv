@@ -1,4 +1,0 @@
-source;share/rov_description/local_setup.bash
-source;share/rov_description/local_setup.dsv
-source;share/rov_description/local_setup.sh
-source;share/rov_description/local_setup.zsh

@@ -1,9 +1,0 @@
-/home/jonah/rov_sim_ws/build/launch/CMakeFiles/uninstall.dir
-/home/jonah/rov_sim_ws/build/launch/CMakeFiles/launch_uninstall.dir
-/home/jonah/rov_sim_ws/build/launch/CMakeFiles/test.dir
-/home/jonah/rov_sim_ws/build/launch/CMakeFiles/edit_cache.dir
-/home/jonah/rov_sim_ws/build/launch/CMakeFiles/rebuild_cache.dir
-/home/jonah/rov_sim_ws/build/launch/CMakeFiles/list_install_components.dir
-/home/jonah/rov_sim_ws/build/launch/CMakeFiles/install.dir
-/home/jonah/rov_sim_ws/build/launch/CMakeFiles/install/local.dir
-/home/jonah/rov_sim_ws/build/launch/CMakeFiles/install/strip.dir
