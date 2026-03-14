@@ -2,8 +2,6 @@ import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Bool, Float32MultiArray
 from geometry_msgs.msg import Twist, Vector3
-import time
-from core_lib import pca9685
 from rcl_interfaces.msg import ParameterDescriptor, FloatingPointRange, SetParametersResult
 from std_srvs.srv import Trigger
 
@@ -102,16 +100,17 @@ class ESCs(Node):
         # Publish array of pulse widths
         pwm_msg = Float32MultiArray(data=[d * 10000 for d in self.last_thrusters])
         self.pwm_pub.publish(pwm_msg)
+        self.log.info(str(pwm_msg))
        
 # Runs the node
 def main(args=None):
     rclpy.init(args=args)
 
-    ESCs = ESCs()
+    escs = ESCs()
 
-    rclpy.spin(ESCs)
+    rclpy.spin(escs)
     
-    ESCs.destroy_node()
+    escs.destroy_node()
     rclpy.shutdown()
 
 if __name__ == '__main__':

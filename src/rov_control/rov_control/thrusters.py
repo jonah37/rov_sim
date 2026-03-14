@@ -6,6 +6,8 @@ class Thrusters(Node):
     def __init__(self):
         super().__init__('thrusters')
 
+        self.log = self.get_logger()
+
         # Public T200 data from BlueRobotics
         self.thrust_lookup = {
             1100: -2.90,
@@ -215,20 +217,21 @@ class Thrusters(Node):
         self.pwm_sub = self.create_subscription(Float32MultiArray, 'ESC_pwm_input', self.thruster_callback, 10)
         # Create a publisher for each for each thruster
         self.thruster_publishers = [
-            self.create_publisher(Float32, 'thruster1', 10)
-            self.create_publisher(Float32, 'thruster2', 10)
-            self.create_publisher(Float32, 'thruster3', 10)
-            self.create_publisher(Float32, 'thruster4', 10)
-            self.create_publisher(Float32, 'thruster5', 10)
+            self.create_publisher(Float32, 'thruster1', 10),
+            self.create_publisher(Float32, 'thruster2', 10),
+            self.create_publisher(Float32, 'thruster3', 10),
+            self.create_publisher(Float32, 'thruster4', 10),
+            self.create_publisher(Float32, 'thruster5', 10),
             self.create_publisher(Float32, 'thruster6', 10)
         ]
 
     def thruster_callback(self, msg):
         pwm_array = msg.data
-        thrust_array = [self.compute_thrust(p) for p in pwm_array))
+        thrust_array = [self.compute_thrust(p) for p in pwm_array]
+        self.log.info(str(thrust_array))
 
         for i in range(6):
-            self.thruster_publishers[i].publish(Float32(data=thrust_array[i])
+            self.thruster_publishers[i].publish(Float32(data=thrust_array[i]))
 
     def compute_thrust(self, pwm):
         try:
@@ -249,7 +252,7 @@ class Thrusters(Node):
         return interpolated_y
 
 
-def main():
+def main(args=None):
     rclpy.init(args=args)
 
     thrusters = Thrusters()

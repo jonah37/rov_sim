@@ -24,8 +24,9 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'thrusters = rov_control:thrusters:main',
-            'ESCs = rov_control:ESCs:main'
+            'joy = rov_control.vector_conversion:main',
+            'thrusters = rov_control.thrusters:main',
+            'ESCs = rov_control.ESCs:main'
         ],
     },
 )
