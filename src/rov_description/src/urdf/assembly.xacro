@@ -2,7 +2,11 @@
 <robot name = "ROV" xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:include filename="core_rov.xacro" />
-  <xacro:include filename="tools/camera.xacro" />
-  <xacro:include filename="tools/gripper.xacro" />
+  <xacro:include filename="tools/thrusters.xacro" />
+
+
+
+
+
 
 

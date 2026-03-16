@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="firefighter">
+
+  <xacro:macro name="thruster" params="thruster_number">
+    <plugin filename="gz-sim-thruster-system" name="gz::sim::systems::Thruster">
+      <topic>thruster${thruster_number}</topic>
+      <joint_name>thruster${thruster_number}</joint_name>
+      <propeller_diameter>0.0973</propeller_diameter>
+    </plugin>
+  </xacro:macro>
+
+  <xacro:macro name = "thrusters">
+    <xacro:thruster thruster_number="1"/>
+    <xacro:thruster thruster_number="2"/>
+    <xacro:thruster thruster_number="3"/>
+    <xacro:thruster thruster_number="4"/>
+    <xacro:thruster thruster_number="5"/>
+    <xacro:thruster thruster_number="6"/> 
+  </xacro:macro>
+</robot>
