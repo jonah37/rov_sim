@@ -12,7 +12,7 @@ def generate_launch_description():
     pkg_path = FindPackageShare('gazebo')
     gz_launch_path = PathJoinSubstitution([ros_gz_sim_pkg_path, 'launch', 'gz_sim.launch.py'])
 
-    return LaunchDescription([
+    description = LaunchDescription([
         SetEnvironmentVariable(
             'GZ_SIM_RESOURCE_PATH',
             PathJoinSubstitution([pkg_path, 'src', 'models'])
@@ -42,4 +42,6 @@ def generate_launch_description():
         ),
 
     ])
+
+    return description
 
